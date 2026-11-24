@@ -1,3 +1,4 @@
+import { prepareFridayRequest } from '../src/shared/friday-workflows.ts';
 import {
   flightJourneySummary,
   presentationImages,
@@ -1401,4 +1402,34 @@ test('the browser proxy refuses a WebSocket upgrade to a private destination', a
     server.closeAllConnections();
     await new Promise<void>((resolve) => server.close(() => resolve()));
   }
+});
+
+test('workflow source inputs refuse credential URLs and non-HTTPS schemes before preparing a request', () => {
+  const input = { workflow: 'research' as const, urls: '', details: 'Compare fees.', app: '' };
+  for (const urls of [
+    'http://example.com',
+    'file:///etc/passwd',
+    'javascript:alert(1)',
+    'https://user:secret@example.com',
+    'not-a-url',
+  ])
+    assert.throws(() => prepareFridayRequest({ ...input, urls }), /HTTPS URL/);
+  assert.throws(() => prepareFridayRequest({ ...input, urls: '' }), /source URL/);
+  assert.throws(
+    () =>
+      prepareFridayRequest({
+        ...input,
+        urls: 'https://a.example https://b.example https://c.example https://d.example',
+      }),
+    /at most 3/,
+  );
+  assert.throws(
+    () =>
+      prepareFridayRequest({
+        ...input,
+        workflow: 'form',
+        urls: 'https://a.example https://b.example',
+      }),
+    /at most 1/,
+  );
 });

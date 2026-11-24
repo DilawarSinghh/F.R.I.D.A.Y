@@ -244,7 +244,7 @@ function learnedIntro(sources: string[], apps: Array<{ slug: string; name: strin
 
 function welcomeGreeting(name: string | undefined) {
   const firstName = name?.trim().split(/\s+/)[0]?.slice(0, 40);
-  return `${firstName ? `Hi ${firstName}!` : 'Hi!'} I’m Nod. Tell me what you’d like off your plate, or start with one of the ideas below. I’ll check with you before I send, buy or delete anything you didn’t ask for.`;
+  return `${firstName ? `Hi ${firstName}!` : 'Hi!'} I’m F.R.I.D.A.Y. Tell me what you’d like off your plate, or start with one of the ideas below. I’ll check with you before I send, buy or delete anything you didn’t ask for.`;
 }
 
 const commonTasks: Task[] = [

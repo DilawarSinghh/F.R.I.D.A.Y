@@ -1,3 +1,4 @@
+import { FridayWorkflows } from '../components/friday-workflows';
 import { Tooltip } from '../components/tooltip';
 import {
   Fragment,
@@ -122,7 +123,7 @@ function Welcome() {
   return (
     <div className="welcome">
       <BrandMark />
-      <h2>What’s on your mind?</h2>
+      <h2>What can F.R.I.D.A.Y help you complete?</h2>
     </div>
   );
 }
@@ -2687,6 +2688,14 @@ export function Chat({
               remove it in <a href="/usage">Usage</a>, or ask Nod here.
             </Notice>
           )}
+          <FridayWorkflows
+            busy={working || sending || stopping}
+            hasDraft={Boolean(text.trim())}
+            onPrepare={(request) => {
+              setText(request);
+              composer.current?.focus();
+            }}
+          />
           <div
             onInputCapture={() => {
               unreadPositioned.current = currentUnreadVisit.current;

@@ -12,3 +12,14 @@ verified source archives under engine/licenses/speech.
 Agent Plugins 1.0.0 JSON Schemas
 Source: https://github.com/agentplugins/agent-plugins-spec
 Schemas in src/server/agent-plugins/ are distributed under Apache-2.0.
+
+F.R.I.D.A.Y modifications by fish eye, 2026-11-25
+Built on Nod; original runtime and integrations are attributed to n8n and
+their respective authors. Modified files: README.md, index.html,
+src/runtime/prompt.ts, src/server/onboarding-suggestions.ts,
+src/web/main.tsx, src/web/pages/chat.tsx,
+src/web/pages/onboarding/steps/welcome.tsx,
+src/web/components/sidebar.tsx, src/web/components/composer.tsx,
+src/web/components/chat-tools.tsx, tests/url-guards.test.ts.
+New F.R.I.D.A.Y workflow, readiness and documentation files are original
+additions to this fork. Original copyright and third-party terms remain.

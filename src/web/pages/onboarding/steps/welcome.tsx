@@ -13,7 +13,7 @@ function differentiators(local: boolean) {
     {
       icon: MousePointerClick,
       title: 'Gets tasks done',
-      text: 'Nod uses your apps and its own browser to complete tasks.',
+      text: 'F.R.I.D.A.Y uses supported apps and its own browser to complete tasks.',
     },
     {
       icon: Sparkles,
@@ -23,12 +23,12 @@ function differentiators(local: boolean) {
     {
       icon: LockKeyhole,
       title: `Runs on your ${local ? 'computer' : 'server'}`,
-      text: 'Nod works in a private workspace. Sign in with your AI provider or use your own key.',
+      text: 'F.R.I.D.A.Y works in a private workspace. Sign in with your AI provider or use your own key.',
     },
     {
       icon: ShieldCheck,
       title: 'Keeps you in control',
-      text: 'Nod asks you before taking potentially dangerous actions.',
+      text: 'F.R.I.D.A.Y asks you before taking potentially dangerous actions.',
     },
   ];
 }
@@ -56,9 +56,9 @@ export function Welcome({
   return (
     <section className="ob-step ob-welcome">
       <div className="ob-welcome-content">
-        <h1 className="ob-welcome-wordmark" aria-label="Nod">
+        <h1 className="ob-welcome-wordmark" aria-label="F.R.I.D.A.Y">
           <NodGlyph size={48} mode="bounce" className="ob-welcome-mark" />
-          <span aria-hidden="true">Nod</span>
+          <span aria-hidden="true">F.R.I.D.A.Y</span>
         </h1>
         <p className="ob-welcome-copy">An assistant that takes work off your plate.</p>
         <ul className="ob-welcome-points">
@@ -95,7 +95,7 @@ export function Welcome({
 export function WelcomeNote() {
   return (
     <p className="ob-welcome-note">
-      This is a preview version of Nod, developed by n8n
+      F.R.I.D.A.Y by fish eye, built on Nod by n8n
       <br />
       <a className="ob-link" href={legalLinks.terms} target="_blank" rel="noreferrer">
         Terms of Use

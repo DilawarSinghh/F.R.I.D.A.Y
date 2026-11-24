@@ -10,6 +10,7 @@ import { recordFeedbackError } from './lib/feedback-errors';
 import './components/dialog.css';
 import './components/workspace-command.css';
 import './styles.css';
+import './components/friday-workflows.css';
 import './components/tabs.css';
 import './components/message-actions.css';
 import './components/action-card.css';

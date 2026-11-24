@@ -1,0 +1,49 @@
+.friday-workflows {
+  margin: 0 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--control-radius);
+  background: var(--surface);
+  font-size: 13px;
+}
+.friday-workflows summary {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.friday-workflows summary span {
+  margin-left: 8px;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+.friday-workflows form {
+  display: grid;
+  gap: 10px;
+  padding: 0 16px 16px;
+  max-height: 45vh;
+  overflow-y: auto;
+}
+.friday-workflows p {
+  margin: 0;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+.friday-workflows input,
+.friday-workflows textarea,
+.friday-workflows select {
+  width: 100%;
+  min-width: 0;
+  padding: 8px;
+  color: var(--foreground);
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+}
+.friday-workflows textarea {
+  resize: vertical;
+}
+.friday-workflow-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
