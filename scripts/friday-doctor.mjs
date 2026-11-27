@@ -3,6 +3,7 @@ import { access, constants } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
+import { dockerOutput } from './docker-preflight.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const run = promisify(execFile);
@@ -30,15 +31,15 @@ await check('locked application dependencies', async () => {
   return 'installed; run pnpm install --frozen-lockfile after lockfile changes';
 });
 await check('Docker daemon', async () => {
-  await run('docker', ['info', '--format', '{{.NCPU}}'], { timeout: 15000 });
+  await dockerOutput(['info', '--format', '{{.NCPU}}']);
   return 'reachable';
 });
 await check('Docker Compose', async () => {
-  await run('docker', ['compose', 'version'], { timeout: 15000 });
+  await dockerOutput(['compose', 'version']);
   return 'available';
 });
 await check('Docker Buildx', async () => {
-  await run('docker', ['buildx', 'version'], { timeout: 15000 });
+  await dockerOutput(['buildx', 'version']);
   return 'available';
 });
 await check(

@@ -6,6 +6,7 @@ import { existsSync, type BigIntStats } from 'node:fs';
 import fs from 'node:fs/promises';
 import {
   chmod,
+  copyFile,
   lstat,
   mkdir,
   mkdtemp,
@@ -2969,3 +2970,91 @@ server.serve_forever()`;
       assert.equal(await captured(), Buffer.byteLength(data));
     },
   );
+
+test(
+  'source startup refuses unavailable Docker before installs, builds or local data writes',
+  { skip: process.platform === 'win32', timeout: 20000 },
+  async (t) => {
+    for (const [mode, reason] of [
+      ['missing', /Docker executable was not found on PATH/],
+      ['daemon', /synthetic daemon is stopped/],
+      ['permission', /synthetic socket permission denied/],
+      ['compose', /synthetic Compose plugin is missing/],
+      ['buildx', /synthetic Buildx plugin is missing/],
+      ['cpus', /usable CPU count/],
+    ] as const) {
+      await t.test(mode, async () => {
+        const root = await mkdtemp(join(tmpdir(), 'friday-startup-'));
+        try {
+          const scripts = join(root, 'scripts');
+          const bin = join(root, 'bin');
+          await mkdir(scripts);
+          await mkdir(bin);
+          for (const file of [
+            'start.mjs',
+            'docker-preflight.mjs',
+            'local-database.ts',
+            'source-version.ts',
+          ])
+            await copyFile(new URL(`../scripts/${file}`, import.meta.url), join(scripts, file));
+          await writeFile(join(root, 'pnpm-lock.yaml'), 'synthetic-new-lock');
+          await writeFile(join(root, '.env.example'), 'PORT=4310\n');
+          await writeFile(
+            join(bin, 'pnpm'),
+            `#!${process.execPath}\nrequire('node:fs').writeFileSync(${JSON.stringify(join(root, 'unexpected-install-or-build'))}, 'called');`,
+            { mode: 0o700 },
+          );
+          if (mode !== 'missing')
+            await writeFile(
+              join(bin, 'docker'),
+              `#!${process.execPath}
+const args = process.argv.slice(2);
+const mode = ${JSON.stringify(mode)};
+if (args[0] === 'info') {
+  if (mode === 'daemon' || mode === 'permission') {
+    console.error(mode === 'daemon' ? 'synthetic daemon is stopped' : 'synthetic socket permission denied');
+    process.exit(1);
+  }
+  console.log(mode === 'cpus' ? 'not-a-count' : '4');
+} else if (args[0] === mode) {
+  console.error(mode === 'compose' ? 'synthetic Compose plugin is missing' : 'synthetic Buildx plugin is missing');
+  process.exit(1);
+} else if (args[1] !== 'version') {
+  require('node:fs').writeFileSync(${JSON.stringify(join(root, 'unexpected-container-action'))}, 'called');
+  process.exit(1);
+}
+`,
+              { mode: 0o700 },
+            );
+          await assert.rejects(
+            promisify(execFile)(process.execPath, [join(scripts, 'start.mjs'), '--production'], {
+              env: { ...process.env, PATH: bin, NOD_DATA_ROOT: join(root, 'data') },
+              timeout: 10000,
+            }),
+            (error: unknown) => {
+              const result = error as Error & { code: number; stderr: string; stdout: string };
+              assert.equal(result.code, 1);
+              assert.match(result.stderr, reason);
+              assert.doesNotMatch(result.stdout, /built in|starting/);
+              return true;
+            },
+          );
+          for (const name of [
+            'unexpected-install-or-build',
+            'unexpected-container-action',
+            '.env',
+            '.local',
+            'data',
+          ])
+            assert.equal(
+              existsSync(join(root, name)),
+              false,
+              `${mode}: startup wrote ${name} before Docker was ready`,
+            );
+        } finally {
+          await rm(root, { recursive: true, force: true });
+        }
+      });
+    }
+  },
+);

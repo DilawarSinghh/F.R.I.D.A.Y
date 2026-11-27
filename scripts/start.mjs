@@ -1,8 +1,9 @@
-import { execFile, spawn } from 'node:child_process';
+import { spawn } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseEnv, promisify } from 'node:util';
+import { parseEnv } from 'node:util';
+import { requireDocker } from './docker-preflight.mjs';
 import {
   localDatabaseEnvironment,
   prepareLocalDirectories,
@@ -29,16 +30,13 @@ const run = (command, args, env = process.env) =>
 try {
   const [major, minor] = process.versions.node.split('.').map(Number);
   if (major < 24 || (major === 24 && minor < 21)) throw new Error('Use Node.js 24.21.0 or newer.');
+  const dockerCpus = await requireDocker();
   const [wanted, installed] = await Promise.all([
     readFile('pnpm-lock.yaml', 'utf8'),
     readFile('node_modules/.pnpm/lock.yaml', 'utf8').catch(() => ''),
   ]);
   if (wanted !== installed) await run('pnpm', ['install', '--frozen-lockfile', '--prod=false']);
   if (production) await run('pnpm', ['run', 'build']);
-  const { stdout } = await promisify(execFile)('docker', ['info', '--format', '{{.NCPU}}']);
-  const dockerCpus = Number(stdout.trim());
-  if (!Number.isInteger(dockerCpus) || dockerCpus < 1)
-    throw new Error('Docker did not report a usable CPU count.');
   const environment = await withLocalDatabase(process.cwd(), async (database) => {
     const settings = parseEnv(await readFile('.env', 'utf8'));
     const cpuLimit = (name, fallback) => {

@@ -23,3 +23,8 @@ src/web/components/sidebar.tsx, src/web/components/composer.tsx,
 src/web/components/chat-tools.tsx, tests/url-guards.test.ts.
 New F.R.I.D.A.Y workflow, readiness and documentation files are original
 additions to this fork. Original copyright and third-party terms remain.
+
+F.R.I.D.A.Y startup reliability modifications by fish eye, 2026-11-27
+Modified scripts/start.mjs, scripts/friday-doctor.mjs, tests/sandbox.test.ts
+and docs/friday.md and docs/friday-implementation.md; added shared Docker
+preflight checks before install/build.

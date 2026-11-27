@@ -6,7 +6,7 @@ F.R.I.D.A.Y extends Nod rather than starting another agent or browser engine. Th
 
 Use Node.js 24.21.0 or newer and pnpm 10.34.5 from `package.json`. Install with `pnpm install --frozen-lockfile`. Source startup requires Docker, Compose v2 and Buildx, with a reachable daemon. Run `node scripts/friday-doctor.mjs` first. It uses bounded local probes, does not read secrets or call a model, and exits nonzero when a source runtime requirement is missing. A successful readiness check is not an end-to-end demonstration.
 
-Run `pnpm start` for production source mode or `pnpm run dev` for reload. Startup installs changed dependencies and prepares PostgreSQL, the isolated workspace, its firewall and the Chromium browser. It prints a private loopback access link on port 4310. Keep that link private. Source data lives in `.local/` and Docker volumes; keep the Linux Vault master key with backups. Never replace the key for existing encrypted data.
+Run `pnpm start` for production source mode or `pnpm run dev` for reload. Startup first checks Docker daemon access, Compose v2 and Buildx before installing dependencies or building. It then installs changed dependencies and prepares PostgreSQL, the isolated workspace, its firewall and the Chromium browser. It prints a private loopback access link on port 4310. Keep that link private. Source data lives in `.local/` and Docker volumes; keep the Linux Vault master key with backups. Never replace the key for existing encrypted data.
 
 Use the existing `.env.example` for optional configuration. Copy only settings you need into ignored `.env`; do not commit credentials. Configure a model in Settings → Models, using its encrypted provider credential interface or the existing supported sign-in flow. Other providers, local compatible models and ChatGPT sign-in stay supported by Nod. No provider was preselected or authenticated for this fork. The startup check does not infer API access from a chat subscription.
 
@@ -52,6 +52,25 @@ AWS Bedrock is an existing model option if an authorized account is configured. 
 
 ## Known limitations
 
-Docker is absent on the development host, so source server startup, the isolated browser/workspace and live AI demonstrations are blocked. The local Electron app needs prepared private runtime assets, which are not produced by `vite build`. The real Text Editor bridge launch timed out without an accessible matching app, so no native text entry has been demonstrated. The Electron shell launched, but private runtime startup has not been verified. The desktop contract suite also has five connector catalog case failures (503) plus the failed parent test; see the implementation summary. No model is connected. No Gmail account, ElevenLabs key or AWS service is configured. Website compatibility and native app accessibility vary. Do not describe inherited features, fixture tests or a compiled UI as a successfully demonstrated assistant.
+Docker, Compose v2 and Buildx are installed on the development host as of November 27, but the owner account still needs Docker socket access. Until docker info succeeds without sudo, source server startup, the isolated browser/workspace and live AI demonstrations remain blocked. The local Electron app needs prepared private runtime assets, which are not produced by `vite build`. The real Text Editor bridge launch timed out without an accessible matching app, so no native text entry has been demonstrated. The Electron shell launched, but private runtime startup has not been verified. The desktop contract suite also has five connector catalog case failures (503) plus the failed parent test; see the implementation summary. No model is connected. No Gmail account, ElevenLabs key or AWS service is configured. Website compatibility and native app accessibility vary. Do not describe inherited features, fixture tests or a compiled UI as a successfully demonstrated assistant.
 
 The fork has no release/update channel. Do not publish it through n8n's release infrastructure or use an upstream auto-update to replace a customized build. Packaging and release branding remain incomplete; development source mode is the supported build target for this change.
+
+## Startup troubleshooting
+
+If the terminal prints `spawn docker ENOENT` after a successful web build, the Docker executable is absent from the launcher's PATH. The bundle-size and dynamic-import warnings are not the cause of this failure. The launcher now checks Docker before rebuilding and gives a recovery message. The same check runs in development and production source mode.
+
+On this Ubuntu host, the package index provides `docker.io`, `docker-compose-v2` and `docker-buildx`. Install these in your own terminal with administrator access:
+
+```sh
+sudo apt update
+sudo apt install docker.io docker-compose-v2 docker-buildx
+sudo systemctl start docker
+docker info
+docker compose version
+docker buildx version
+```
+
+The Codex execution session cannot run `sudo` because its operating system sets `no-new-privileges`. Enter your password only in your own terminal. If Docker is installed but `docker info` reports permission denied, your normal user still needs an authorized Docker access setup. Do not run the entire F.R.I.D.A.Y application with sudo or make the Docker socket world-writable. Use Docker's documented non-root or rootless setup, then retry `docker info` from a fresh terminal. Docker group membership grants root-level host privileges and should be an explicit owner choice.
+
+After all three checks succeed, run `node scripts/friday-doctor.mjs` and `pnpm start` from the project directory. A ready Docker installation removes this startup blocker; it does not verify the model connection or native desktop workflow.

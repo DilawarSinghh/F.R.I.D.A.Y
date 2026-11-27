@@ -55,3 +55,11 @@ The existing runtime observes, discovers tools, checks Trust, executes, reads re
 ### Unconfigured or planned
 
 Email, ElevenLabs and AWS services remain unconfigured and untested. No billable infrastructure was created. Packaged release branding and a fork-owned update channel remain unfinished. The three complete live demonstrations must be verified before presenting this as a finished functional prototype.
+
+## November 27 startup repair
+
+The reported terminal output ended in `spawn docker ENOENT` after a successful production build. Docker was absent. The source launcher now runs shared, bounded Docker daemon/Compose v2/Buildx preflight checks immediately after Node version validation, before dependency installs, web builds or local database preparation. The readiness command uses the same error handling, retaining the specific failure reason and an actionable recovery message.
+
+Six synthetic subprocess cases verify missing Docker, stopped daemon, denied socket access, missing Compose, missing Buildx and invalid CPU output. They check that startup exits before package-manager/container actions or local data/configuration writes. The runner reports seven passed tests including their parent test. TypeScript, lint, formatting and the documentation build/link check also passed.
+
+Docker 29.1.3, Compose 2.40.3 and Buildx 0.30.1 were then installed by the owner, and the Docker service is active. The next actual startup check correctly reported permission denied at `/var/run/docker.sock`; the account was not yet in the Docker group. The owner chose standard Docker group access and is applying that setup in their own terminal. The Codex execution environment cannot use sudo because of its no-new-privileges restriction. No socket permission weakening or sudo application launch was added. Live container and assistant startup remain pending until the owner's non-root Docker check succeeds.
