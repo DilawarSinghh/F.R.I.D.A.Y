@@ -113,7 +113,7 @@ function Workspace({
   useBrowserNotifications(session.user!.id, state);
   useSavedDateFormat();
   useBrowserTimeZone();
-  const [collapsed, setCollapsed] = useState(() => readUiPreference('nod.sidebar') !== 'expanded');
+  const [collapsed, setCollapsed] = useState(() => readUiPreference('nod.sidebar') === 'collapsed');
   const [toolbarActions, setToolbarActions] = useState<HTMLDivElement | null>(null);
   const [mobileActions, setMobileActions] = useState<HTMLDivElement | null>(null);
   const [mobileHeader, setMobileHeader] = useState(

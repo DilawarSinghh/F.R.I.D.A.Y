@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
-  --white: #fafafa;
-  --black: #191919;
+  --white: #f7f7f2;
+  --black: #111a25;
   --gray-0: #fff;
   --gray-10: #f8f8f8;
   --gray-15: #f1f1f1;
@@ -15,15 +15,16 @@
   --gray-80: #464646;
   --gray-85: #353535;
   --gray-90: #242424;
-  --pink-10: #ffe8ec;
-  --pink-20: #ffd0d9;
-  --pink-30: #ffbcca;
-  --brand-pink: #ff91ac;
-  --pink-70: #87003c;
-  --pink-80: #5a0026;
+  --pink-10: #fbf0d9;
+  --pink-20: #f6e1af;
+  --pink-30: #f1ca78;
+  --brand-accent: #efb54a;
+  --brand-pink: var(--brand-accent);
+  --pink-70: #815500;
+  --pink-80: #493515;
   --background: var(--white);
   --canvas: var(--background);
-  --sidebar: #f5f5f5;
+  --sidebar: #101924;
   --surface: var(--gray-0);
   --surface-overlay: var(--gray-0);
   --surface-subtle: var(--gray-15);
@@ -83,7 +84,7 @@
   --chart-8: var(--gray-50);
   --chart-9: var(--pink-20);
   --chart-10: var(--gray-60);
-  --chart-11: #44001b;
+  --chart-11: #38280f;
   --chart-12: var(--gray-30);
   --chart-line-1: var(--pink-70);
   --chart-line-2: var(--gray-90);
@@ -125,7 +126,7 @@
   color-scheme: dark;
   --link-hover: var(--pink-20);
   --background: var(--black);
-  --sidebar: #1f1f1f;
+  --sidebar: #101924;
   --surface: var(--gray-90);
   --surface-overlay: var(--gray-85);
   --surface-subtle: var(--gray-90);
@@ -192,4 +193,44 @@
 body {
   color: var(--foreground);
   background: var(--canvas);
+}
+
+:root {
+  --control-radius: 10px;
+  --input-radius: 12px;
+  --card-radius: 16px;
+  --dialog-radius: 20px;
+  --menu-radius: 12px;
+  --background: #f7f7f2;
+  --canvas: #f7f7f2;
+  --surface: #ffffff;
+  --surface-subtle: #f0f1eb;
+  --surface-inset: #e9ece5;
+  --border: #dde1d9;
+  --input: #d4d9d0;
+  --muted-foreground: #596658;
+  --shadow-composer: 0 8px 32px #1020170a, 0 1px 3px #1020170a;
+}
+:root[data-theme='dark'] {
+  --background: #111a25;
+  --canvas: #111a25;
+  --surface: #172330;
+  --surface-overlay: #20303d;
+  --surface-subtle: #172330;
+  --surface-inset: #243442;
+  --hover: #243442;
+  --border: #2b3a46;
+  --input-background: #101b26;
+  --input: #354653;
+  --muted-foreground: #a4b4be;
+  --text-secondary: #c4cfd5;
+  --foreground: #f1f4ee;
+  --accent-soft: #312c21;
+  --accent-border: #725c32;
+  --control: #243442;
+  --control-hover: #2a3f4e;
+  --control-active: #2a3f4e;
+  --chat-sent: #293b47;
+  --primary-foreground: #111a25;
+  --shadow-composer: 0 8px 32px #00000020;
 }

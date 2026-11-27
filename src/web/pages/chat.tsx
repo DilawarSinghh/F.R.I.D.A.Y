@@ -1,3 +1,4 @@
+import { FridayCommandHeader, FridayWelcome } from '../components/friday-command';
 import { FridayWorkflows } from '../components/friday-workflows';
 import { Tooltip } from '../components/tooltip';
 import {
@@ -118,14 +119,6 @@ function atOrBefore(
 ) {
   const difference = Date.parse(message.createdAt) - Date.parse(boundary.createdAt);
   return difference < 0 || (difference === 0 && message.id <= boundary.id);
-}
-function Welcome() {
-  return (
-    <div className="welcome">
-      <BrandMark />
-      <h2>What can F.R.I.D.A.Y help you complete?</h2>
-    </div>
-  );
 }
 function Working({
   items = [],
@@ -2210,12 +2203,12 @@ export function Chat({
       <ArtifactWorkspace className="chat-page" files={files}>
         {toolbarActions || desktopSettingsAvailable() ? (
           <>
-            <h1 className="sr-only">Chat</h1>
+            <span className="sr-only">Workspace actions</span>
             {toolbarActions && createPortal(chatActions, toolbarActions)}
           </>
         ) : (
           <header className="chat-report-action">
-            <h1 className="sr-only">Chat</h1>
+            <span className="sr-only">Workspace actions</span>
             {chatActions}
           </header>
         )}
@@ -2261,6 +2254,10 @@ export function Chat({
           onKeyDown={cancelReturn}
         >
           <div className="conversation-column">
+            <FridayCommandHeader
+              configured={state.configuration.llmReady}
+              issue={Boolean(state.configuration.modelIssue)}
+            />
             {unreadError && (
               <div className="history-control">
                 <Tooltip content={unreadError}>
@@ -2311,7 +2308,16 @@ export function Chat({
               !welcoming &&
               !working &&
               !sending &&
-              (state.configuration.llmReady ? <Welcome /> : modelSetup)}
+              (state.configuration.llmReady ? <FridayWelcome /> : modelSetup)}
+            <FridayWorkflows
+              compact={visibleMessages.length > 0}
+              busy={working || sending || stopping}
+              hasDraft={Boolean(text.trim())}
+              onPrepare={(request) => {
+                setText(request);
+                composer.current?.focus();
+              }}
+            />
             <div
               className="messages"
               role="log"
@@ -2685,17 +2691,10 @@ export function Chat({
           {spendingPaused && trust?.limit && (
             <Notice kind="info">
               You reached your {money(trust.limit.monthlyUsd)} monthly spending limit. Raise or
-              remove it in <a href="/usage">Usage</a>, or ask Nod here.
+              remove it in <a href="/usage">Usage</a>, or ask F.R.I.D.A.Y here.
             </Notice>
           )}
-          <FridayWorkflows
-            busy={working || sending || stopping}
-            hasDraft={Boolean(text.trim())}
-            onPrepare={(request) => {
-              setText(request);
-              composer.current?.focus();
-            }}
-          />
+
           <div
             onInputCapture={() => {
               unreadPositioned.current = currentUnreadVisit.current;

@@ -112,8 +112,8 @@ const testInstall =
   app.isPackaged &&
   JSON.parse(await readFile(join(desktopRoot, 'package.json'), 'utf8')).nodBuild?.testProfile ===
     true;
-const appName = testInstall ? 'nod Setup Test' : 'Nod';
-app.setName(process.platform === 'darwin' && app.isPackaged && !testInstall ? 'nod' : appName);
+const appName = testInstall ? 'nod Setup Test' : 'F.R.I.D.A.Y';
+app.setName(appName);
 const developmentDataRoot =
   !app.isPackaged || testInstall ? process.env.NOD_DESKTOP_USER_DATA : undefined;
 if (developmentDataRoot && !isAbsolute(developmentDataRoot))
@@ -255,7 +255,7 @@ let status = {
   unlockingKeys: false,
   phase: 'idle',
   stage: 'computer',
-  message: 'Set up Nod on your computer.',
+  message: 'Set up F.R.I.D.A.Y on your computer.',
   runtime: {
     phase: 'idle',
     stage: 'computer',
@@ -396,7 +396,7 @@ const readinessNotice = createReadinessNotice({
     if (!eligible() || quitting || !preferences.notifications || foregroundWindow()) return false;
     if (!Notification.isSupported() || isQuietTime(saved.preferences)) return true;
     const notification = new Notification({
-      title: 'Nod is ready',
+      title: 'F.R.I.D.A.Y is ready',
       icon: notificationIcon,
       body: onboardingCompleted
         ? 'Your workspace and browser are ready.'
@@ -471,7 +471,8 @@ function update(value) {
     delete status.details;
   for (const window of [setupWindow, engineWindow])
     if (window && !window.isDestroyed()) window.webContents.send('nod:status', status);
-  if (tray) tray.setToolTip(`Nod — ${status.phase === 'ready' ? 'Running' : status.message}`);
+  if (tray)
+    tray.setToolTip(`F.R.I.D.A.Y — ${status.phase === 'ready' ? 'Running' : status.message}`);
   showDownloadProgress();
   updateReadinessNotice();
   captureLocalSetup();
@@ -687,7 +688,7 @@ async function notifyAssistantMessage(message, threadId) {
   )
     return;
   const notification = new Notification({
-    title: 'Nod',
+    title: 'F.R.I.D.A.Y',
     icon: notificationIcon,
     body: assistantNotificationPreview(message, knownSecrets),
   });
@@ -720,7 +721,7 @@ async function notifyAssistantMessage(message, threadId) {
 function showNotificationConfirmation() {
   if (!preferences.notifications || quitting || !Notification.isSupported()) return;
   const notification = new Notification({
-    title: 'Nod',
+    title: 'F.R.I.D.A.Y',
     icon: notificationIcon,
     body: 'Notifications are on.',
   });
@@ -1048,8 +1049,8 @@ function showSettings(section = 'general', loading = false) {
     ...bounds,
     minWidth: Math.min(700, bounds.width),
     minHeight: Math.min(600, bounds.height),
-    title: 'Nod',
-    backgroundColor: nativeTheme.shouldUseDarkColors ? '#191919' : '#fafafa',
+    title: 'F.R.I.D.A.Y',
+    backgroundColor: nativeTheme.shouldUseDarkColors ? '#111a25' : '#f7f7f2',
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
     ...(process.platform === 'darwin' ? { trafficLightPosition: { x: 20, y: 17 } } : {}),
     ...windowsTitleBar(nativeTheme.shouldUseDarkColors),
@@ -1188,8 +1189,8 @@ function showEngine({ focus = true } = {}) {
     ...bounds,
     minWidth: Math.min(700, bounds.width),
     minHeight: Math.min(600, bounds.height),
-    title: 'Nod',
-    backgroundColor: nativeTheme.shouldUseDarkColors ? '#191919' : '#fafafa',
+    title: 'F.R.I.D.A.Y',
+    backgroundColor: nativeTheme.shouldUseDarkColors ? '#111a25' : '#f7f7f2',
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
     ...(process.platform === 'darwin' ? { trafficLightPosition: { x: 20, y: 17 } } : {}),
     ...windowsTitleBar(nativeTheme.shouldUseDarkColors),

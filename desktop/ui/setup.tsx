@@ -15,6 +15,7 @@ import '../../src/web/components/dialog.css';
 import '../../src/web/components/data-sharing.css';
 import '../../src/web/pages/onboarding/onboarding.css';
 import '../../src/web/pages/onboarding/steps/welcome.css';
+import '../../src/web/friday-identity.css';
 
 type RuntimeStatus = {
   phase?: string;
@@ -128,7 +129,7 @@ function OnboardingSetup() {
               disabled={busy || !desktop}
               onClick={() => void run(() => desktop!.closeConnectionSettings())}
             >
-              Back to Nod
+              Back to F.R.I.D.A.Y
             </button>
             <button
               className="server-entry"
@@ -245,7 +246,8 @@ function ConnectionSetup() {
             aria-describedby="server-token-help"
           />
           <p id="server-token-help" className="server-help">
-            Enter your server’s NOD_AUTH_TOKEN. Nod saves it in your computer’s secure storage.
+            Enter your server’s NOD_AUTH_TOKEN. F.R.I.D.A.Y saves it in your computer’s secure
+            storage.
           </p>
           {error && (
             <p className="server-error" role="alert">
@@ -281,7 +283,7 @@ function ConnectionSetup() {
 function Startup() {
   const [status, setStatus] = useState<Status>(() =>
     !desktop
-      ? { phase: 'error', error: 'Open Nod to finish setup.' }
+      ? { phase: 'error', error: 'Open F.R.I.D.A.Y to finish setup.' }
       : parameters.has('unlocking')
         ? { phase: 'starting', unlockingKeys: true, platform: parameters.get('unlocking')! }
         : { phase: 'preparing' },
@@ -319,7 +321,7 @@ function Startup() {
       },
       () => {
         if (active && !receivedStatus)
-          setStatus({ phase: 'error', error: 'Nod could not start. Try again.' });
+          setStatus({ phase: 'error', error: 'F.R.I.D.A.Y could not start. Try again.' });
       },
     );
     void Promise.all([desktop.getPreferences(), desktop.getSettings()])
@@ -364,7 +366,7 @@ function Startup() {
         ...previous,
         phase: 'error',
         unlockingKeys: false,
-        error: cause instanceof Error ? cause.message : 'Nod could not start. Try again.',
+        error: cause instanceof Error ? cause.message : 'F.R.I.D.A.Y could not start. Try again.',
       }));
     } finally {
       recoveryPending.current = false;
@@ -402,8 +404,8 @@ function Startup() {
         <div className="titlebar" aria-hidden="true" />
         <SetupProgress
           local={!status.remote}
-          title="Updating Nod…"
-          description="Nod reopens when it’s done."
+          title="Updating F.R.I.D.A.Y…"
+          description="F.R.I.D.A.Y reopens when it’s done."
         />
       </>
     );
@@ -482,7 +484,7 @@ function Startup() {
   const working = busy || recovering;
   const error =
     !working && failure
-      ? failure.error || failure.message || 'Nod could not start. Try again.'
+      ? failure.error || failure.message || 'F.R.I.D.A.Y could not start. Try again.'
       : undefined;
   const progress =
     !failure &&
@@ -494,8 +496,8 @@ function Startup() {
       : undefined;
   const description = unlocking
     ? status.platform === 'darwin'
-      ? 'Nod uses your Mac’s Keychain to protect your saved connections. Allow access if macOS asks.'
-      : 'Nod uses your system’s secure storage to protect your saved connections.'
+      ? 'F.R.I.D.A.Y uses your Mac’s Keychain to protect your saved connections. Allow access if macOS asks.'
+      : 'F.R.I.D.A.Y uses your system’s secure storage to protect your saved connections.'
     : working
       ? firstSetup
         ? 'Preparing your workspace and browser.'
@@ -544,7 +546,7 @@ function Startup() {
         }
         title={
           error
-            ? 'Nod needs another try'
+            ? 'F.R.I.D.A.Y needs another try'
             : status.remote
               ? 'Connecting to your server…'
               : active.message || startupMessage(active.stage)

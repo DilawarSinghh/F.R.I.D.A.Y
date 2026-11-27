@@ -1,12 +1,12 @@
 {
-  "name": "nod-desktop",
-  "productName": "Nod",
+  "name": "friday-desktop",
+  "productName": "F.R.I.D.A.Y",
   "version": "0.9.6",
   "license": "Apache-2.0",
   "private": true,
   "type": "module",
   "main": "main/main.mjs",
-  "description": "Nod, the open source personal agent from n8n",
+  "description": "F.R.I.D.A.Y personal AI workspace by fish eye, built on Nod",
   "scripts": {
     "postinstall": "node scripts/patch-osx-sign.mjs",
     "start": "electron .",

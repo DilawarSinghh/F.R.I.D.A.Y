@@ -64,6 +64,7 @@ import './components/sidebar-unread.css';
 import './components/sidebar-toggle.css';
 import './components/action-menu.css';
 import './components/tooltip.css';
+import './friday-identity.css';
 
 initializeTheme();
 initializeFocusVisibility();

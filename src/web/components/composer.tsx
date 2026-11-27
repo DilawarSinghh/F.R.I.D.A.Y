@@ -177,7 +177,7 @@ export const Composer = forwardRef<ComposerHandle, ComposerProps>(function Compo
     submit: () => {},
     upload: (_files: File[], _method: 'paste') => {},
   });
-  const placeholder = busy ? 'Send another message to F.R.I.D.A.Y…' : 'Message F.R.I.D.A.Y…';
+  const placeholder = busy ? 'Add a detail or steer the task…' : 'Describe your next task…';
   const currentPlaceholder = useRef(placeholder);
   currentPlaceholder.current = placeholder;
   const extensions = useMemo(

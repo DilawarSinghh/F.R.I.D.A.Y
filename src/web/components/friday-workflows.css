@@ -1,49 +1,200 @@
 .friday-workflows {
-  margin: 0 0 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--control-radius);
-  background: var(--surface);
+  margin: 8px 0 28px;
+}
+.friday-workflow-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.friday-workflow-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: none;
+  color: var(--foreground);
+  font: inherit;
   font-size: 13px;
-}
-.friday-workflows summary {
-  padding: 12px 16px;
   cursor: pointer;
-  font-weight: 600;
+  padding: 8px 0;
 }
-.friday-workflows summary span {
-  margin-left: 8px;
-  color: var(--muted-foreground);
-  font-weight: 400;
-}
-.friday-workflows form {
+.friday-workflow-grid {
   display: grid;
-  gap: 10px;
-  padding: 0 16px 16px;
-  max-height: 45vh;
-  overflow-y: auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
-.friday-workflows p {
+.friday-workflow-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--foreground);
+  padding: 20px;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 150ms,
+    background 150ms;
+}
+.friday-workflow-card:hover,
+.friday-workflow-card[aria-pressed='true'] {
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+}
+.friday-workflow-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--accent);
+}
+.friday-workflow-card-top > span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.friday-workflow-card > strong {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+.friday-workflow-description {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  flex: 1;
+}
+.friday-workflow-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-top: 6px;
+}
+.friday-workflow-form {
+  display: grid;
+  gap: 11px;
+  margin-top: 16px;
+  padding: 22px;
+  border: 1px solid var(--accent-border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+.friday-workflow-form[hidden],
+.friday-workflows [hidden] {
+  display: none;
+}
+.friday-workflow-form-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.friday-workflow-form-heading h3 {
+  margin: 6px 0 0;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+}
+.friday-workflow-hint,
+.friday-workflow-prepared {
   margin: 0;
   color: var(--muted-foreground);
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.6;
 }
-.friday-workflows input,
-.friday-workflows textarea,
-.friday-workflows select {
+.friday-workflow-prepared {
+  margin-top: 16px;
+  color: var(--accent);
+}
+.friday-workflow-form label {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.friday-workflow-form :is(input, textarea) {
   width: 100%;
   min-width: 0;
-  padding: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--input);
+  border-radius: 9px;
+  background: var(--input-background);
   color: var(--foreground);
-  background: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 6px;
   font: inherit;
+  font-size: 14px;
+  line-height: 1.6;
 }
-.friday-workflows textarea {
+.friday-workflow-form textarea {
   resize: vertical;
 }
-.friday-workflow-links {
+.friday-workflow-form :is(input, textarea):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.friday-workflow-actions {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   gap: 16px;
+  margin-top: 10px;
+}
+.friday-workflow-actions > span {
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.friday-workflow-card:focus-visible,
+.friday-workflow-toggle:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+@media (max-width: 850px) {
+  .friday-workflow-grid {
+    gap: 10px;
+  }
+  .friday-workflow-card {
+    padding: 16px;
+    gap: 10px;
+  }
+}
+@media (max-width: 560px) {
+  .friday-workflow-grid {
+    grid-template-columns: 1fr;
+  }
+  .friday-workflow-card {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 7px 12px;
+  }
+  .friday-workflow-card-top {
+    grid-row: 1 / 4;
+    align-items: start;
+  }
+  .friday-workflow-card-top > span {
+    display: none;
+  }
+  .friday-workflow-description,
+  .friday-workflow-card-bottom {
+    grid-column: 2;
+  }
+  .friday-workflow-card-bottom {
+    margin-top: 3px;
+  }
+  .friday-workflow-form {
+    padding: 16px;
+  }
+  .friday-workflow-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .friday-workflow-card {
+    transition: none;
+  }
 }

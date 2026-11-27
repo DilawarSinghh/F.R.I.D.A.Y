@@ -6,7 +6,7 @@
     <meta name="referrer" content="no-referrer" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script src="/theme-init.js"></script>
-    <title>Return to Nod</title>
+    <title>Return to F.R.I.D.A.Y</title>
     <style>
       @font-face {
         font-family: 'Geist';
@@ -29,7 +29,7 @@
         --muted: #bfbfbf;
         --surface: #242424;
         --border: #353535;
-        --focus: #ff91ac;
+        --focus: #efb54a;
       }
       * {
         box-sizing: border-box;
@@ -93,7 +93,7 @@
         min-height: 44px;
         padding: 10px 20px;
         border-radius: 999px;
-        background: #ff91ac;
+        background: #efb54a;
         color: #191919;
         font-size: 14px;
         font-weight: 500;
@@ -125,16 +125,21 @@
   <body>
     <main aria-labelledby="title">
       <div class="brand">
-        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="4" />
-          <circle cx="25" cy="6" r="4" fill="#ff91ac" />
+        <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <path
+            d="M18 2 32 10v16l-14 8L4 26V10Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <path d="M11 10h15l-3 5h-6v4h6l-3 5h-3v5h-6Z" fill="#efb54a" />
         </svg>
-        <span>Nod</span>
+        <span>F.R.I.D.A.Y</span>
       </div>
-      <h1 id="title">Return to Nod</h1>
-      <p id="message">Check your connection in Nod.</p>
+      <h1 id="title">Return to F.R.I.D.A.Y</h1>
+      <p id="message">Check your connection in F.R.I.D.A.Y.</p>
       <div class="actions">
-        <a id="return" class="return" href="/apps">Return to Nod</a>
+        <a id="return" class="return" href="/apps">Return to F.R.I.D.A.Y</a>
       </div>
     </main>
     <script>
@@ -173,10 +178,10 @@
         if (!succeeded)
           message.textContent =
             connection === 'expired'
-              ? 'Check your connection in Nod.'
+              ? 'Check your connection in F.R.I.D.A.Y.'
               : connection === 'cancelled'
-                ? 'You can start again in Nod.'
-                : 'Try again in Nod.';
+                ? 'You can start again in F.R.I.D.A.Y.'
+                : 'Try again in F.R.I.D.A.Y.';
         const desktop = query.get('desktop') === '1';
         const returnLink = document.getElementById('return');
         returnLink.href = desktop ? 'nod://open/apps' : '/apps';
@@ -194,7 +199,7 @@
             window.close();
           } catch {}
         });
-        document.title = `${title} · Nod`;
+        document.title = `${title} · F.R.I.D.A.Y`;
         try {
           history.replaceState(null, '', location.pathname);
         } catch {}

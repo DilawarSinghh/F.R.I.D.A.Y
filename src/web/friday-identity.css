@@ -1,0 +1,506 @@
+.button {
+  border-radius: 10px;
+}
+.button-icon {
+  border-radius: 9px;
+}
+.sidebar {
+  width: 244px;
+  background: #101924;
+  color: #e8efed;
+  padding: 26px 16px 16px;
+  border-right: 1px solid #263440;
+}
+.sidebar .brand {
+  height: auto;
+  padding: 0 8px;
+  gap: 11px;
+  letter-spacing: 1.5px;
+  font-size: 20px;
+  color: #f2f5ef;
+}
+.sidebar .brand-glyph {
+  width: 37px;
+  height: 42px;
+}
+.friday-wordmark {
+  display: grid;
+  gap: 7px;
+}
+.friday-wordmark small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 1.65px;
+  color: #8ea4ae;
+}
+.friday-nav-caption {
+  margin: 48px 12px 14px;
+  color: #7d939f;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.8px;
+}
+.sidebar .main-nav {
+  position: static;
+  transform: none;
+  margin: 0;
+}
+.sidebar .main-nav ul {
+  display: grid;
+  gap: 7px;
+}
+.sidebar .nav-link {
+  min-height: 44px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  gap: 13px;
+  color: #aabcc5;
+  font-size: 13px;
+}
+.sidebar .nav-link:hover {
+  color: #f2f5ef;
+  background: #1c2b38;
+}
+.sidebar .nav-link-active,
+.sidebar .nav-link-active:hover {
+  background: #28342f;
+  color: #f1c46d;
+}
+.sidebar .nav-link-active svg {
+  color: #efb54a;
+}
+.friday-browser-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #aabcc5;
+  border-top: 1px solid #293945;
+  margin: 26px 12px 0;
+  padding-top: 18px;
+  font-size: 12px;
+  text-decoration: none;
+}
+.friday-browser-link:hover {
+  color: #f1c46d;
+}
+.friday-team-signature {
+  display: grid;
+  gap: 7px;
+  padding: 18px 12px;
+}
+.friday-team-signature > span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #8ea4ae;
+}
+.friday-team-signature > small {
+  font-size: 11px;
+  color: #7d939f;
+  line-height: 1.5;
+}
+.friday-about {
+  font-size: 11px;
+  line-height: 1.7;
+  text-align: left;
+}
+.friday-about summary {
+  cursor: pointer;
+  color: var(--muted-foreground);
+}
+.friday-about > div {
+  padding: 12px 0;
+  max-width: 440px;
+}
+.friday-about p {
+  margin: 8px 0;
+}
+.friday-about a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.sidebar .friday-about {
+  margin: 0 12px 12px;
+  color: #aabcc5;
+}
+.sidebar .friday-about summary {
+  color: #8ea4ae;
+}
+.sidebar-bottom {
+  gap: 8px;
+}
+.sidebar-collapsed .sidebar {
+  width: 84px;
+  padding-inline: 12px;
+}
+.sidebar-collapsed .sidebar .brand {
+  padding: 0 10px;
+}
+.sidebar-collapsed .sidebar .nav-link {
+  justify-content: center;
+  padding-inline: 10px;
+}
+.sidebar-collapsed
+  :is(.friday-nav-caption, .friday-team-signature, .friday-browser-link, .sidebar .friday-about) {
+  display: none;
+}
+.sidebar-collapsed .main-nav {
+  margin-top: 38px;
+}
+.workspace-frame {
+  background: var(--canvas);
+}
+.conversation-column {
+  max-width: 1100px;
+  padding-inline: clamp(22px, 4vw, 60px);
+}
+.friday-command-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.friday-eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 1.6px;
+  color: var(--muted-foreground);
+}
+.friday-command-header h1 {
+  margin: 7px 0 0;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.7px;
+}
+.friday-model-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  text-decoration: none;
+  font-size: 11px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--muted-foreground);
+  background: var(--surface);
+}
+.friday-model-state > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warning);
+}
+.friday-model-state[data-ready='true'] > span {
+  background: var(--success);
+}
+.friday-welcome {
+  padding: 26px 0 34px;
+  max-width: 640px;
+}
+.friday-welcome-symbol {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 24px;
+  color: var(--accent);
+}
+.friday-welcome-symbol > span:last-child {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.friday-welcome h2 {
+  margin: 0;
+  font-size: clamp(32px, 4.5vw, 54px);
+  line-height: 1.12;
+  font-weight: 500;
+  letter-spacing: -2px;
+  color: var(--foreground);
+}
+.friday-welcome > p {
+  max-width: 430px;
+  font-size: 15px;
+  color: var(--muted-foreground);
+  line-height: 1.8;
+  margin: 18px 0;
+}
+.friday-control-note {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+.chat-page .chat-bottom {
+  padding-top: 14px;
+  padding-bottom: 20px;
+  background: var(--canvas);
+}
+.chat-page .composer {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow-composer);
+}
+.chat-page .composer:focus-within {
+  border-color: var(--accent-border);
+}
+.chat-page .send-button {
+  background: var(--brand-accent);
+  color: #111a25;
+  border-radius: 9px;
+}
+.message-user .message-content {
+  border: 1px solid var(--border);
+  background: var(--chat-sent);
+  color: var(--chat-sent-foreground);
+  border-radius: 14px 14px 4px 14px;
+}
+.message-assistant .assistant-mark {
+  color: var(--accent);
+}
+.welcome.model-setup {
+  min-height: 260px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  align-items: flex-start;
+  padding: 32px;
+  gap: 16px;
+}
+.welcome.model-setup h2 {
+  padding: 0;
+  background: none;
+  font-size: 26px;
+  letter-spacing: -0.7px;
+}
+.welcome.model-setup .brand-glyph {
+  margin-bottom: 0;
+}
+.page-heading h1,
+.content-page h1 {
+  letter-spacing: -1px;
+}
+.content-page {
+  padding-top: 32px;
+}
+.friday-signal {
+  color: var(--foreground);
+}
+.friday-signal[data-mode='thinking'] {
+  animation: friday-breathe 1.8s ease-in-out infinite;
+}
+.friday-signal[data-waiting='true'] {
+  color: var(--warning);
+}
+@keyframes friday-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.48;
+  }
+}
+.ob {
+  background: var(--canvas);
+}
+.ob-brand {
+  font-size: 18px;
+  letter-spacing: 1px;
+  gap: 12px;
+}
+.ob-welcome {
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 48px 32px 24px;
+}
+.ob-welcome-content {
+  gap: 25px;
+  align-items: flex-start;
+  text-align: left;
+  width: min(100%, 800px);
+}
+.ob-welcome-wordmark {
+  font-size: clamp(30px, 5vw, 52px);
+  letter-spacing: 1px;
+  gap: 18px;
+}
+.ob-welcome-copy {
+  font-size: 24px;
+  max-width: 570px;
+  color: var(--muted-foreground);
+}
+.ob-welcome-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+.ob-welcome-point {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 18px;
+  gap: 14px;
+  animation: none;
+  opacity: 1;
+}
+.ob-welcome-point-icon {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 8px;
+}
+.ob-welcome-note {
+  margin-top: 32px;
+  text-align: left;
+  width: min(100%, 800px);
+}
+.ob-welcome-note .friday-about {
+  margin-bottom: 8px;
+}
+.server-access-page {
+  background: var(--canvas);
+}
+.server-access {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  padding: 36px;
+}
+.server-access-header {
+  align-items: flex-start;
+  text-align: left;
+}
+:root[data-desktop='true'] .app-shell {
+  --desktop-sidebar-width: 84px;
+}
+:root[data-desktop='true'] .app-shell:not(.sidebar-collapsed) {
+  --desktop-sidebar-width: 244px;
+}
+:root[data-desktop='true'] .sidebar {
+  width: var(--desktop-sidebar-width);
+}
+@media (max-width: 640px) {
+  .sidebar {
+    width: 100%;
+    padding: 0;
+    border-right: 0;
+  }
+  .sidebar .friday-nav-caption,
+  .sidebar .friday-browser-link,
+  .sidebar .friday-team-signature,
+  .sidebar .friday-about {
+    display: none;
+  }
+  .sidebar-collapsed .sidebar {
+    width: 100%;
+    padding: 0;
+  }
+  .sidebar .mobile-top-bar {
+    color: var(--foreground);
+  }
+  .friday-command-header {
+    padding: 22px 0 18px;
+    gap: 12px;
+  }
+  .friday-command-header h1 {
+    font-size: 20px;
+  }
+  .friday-model-state {
+    font-size: 10px;
+    padding: 8px;
+  }
+  .friday-model-state svg {
+    display: none;
+  }
+  .friday-command-header .friday-eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .friday-welcome {
+    padding-top: 12px;
+  }
+  .friday-welcome h2 {
+    letter-spacing: -1.3px;
+  }
+  .friday-welcome > p {
+    font-size: 14px;
+  }
+  .ob-welcome {
+    padding: 30px 22px 20px;
+  }
+  .ob-welcome-points {
+    grid-template-columns: 1fr;
+  }
+  .ob-welcome-content {
+    gap: 22px;
+  }
+  .ob-welcome-copy {
+    font-size: 20px;
+  }
+  .server-access {
+    padding: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .friday-signal {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    background: var(--canvas);
+    color: var(--foreground);
+  }
+  .sidebar .mobile-sheet .friday-about {
+    display: block;
+    color: var(--foreground);
+    margin-top: 24px;
+  }
+  .sidebar .mobile-sheet .friday-about summary {
+    color: var(--muted-foreground);
+  }
+}
+@media (min-width: 641px) {
+  .app-shell:not(.sidebar-collapsed) .sidebar .brand > .friday-wordmark {
+    display: grid;
+    opacity: 1;
+  }
+  .app-shell:not(.sidebar-collapsed) .sidebar .nav-link > .nav-label {
+    display: inline;
+    opacity: 1;
+  }
+}
+@media (max-width: 640px) {
+  .app-shell .sidebar {
+    background: var(--canvas);
+    color: var(--foreground);
+  }
+}
+
+.ob-welcome-points {
+  max-width: none;
+}
+.ob-welcome-point {
+  min-width: 0;
+}
+
+@media (min-width: 641px) {
+  .sidebar :is(a, button, summary):focus-visible {
+    outline: 2px solid #efb54a;
+    outline-offset: 3px;
+  }
+}

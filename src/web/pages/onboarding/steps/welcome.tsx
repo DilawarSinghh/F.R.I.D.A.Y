@@ -1,9 +1,9 @@
 import { useEffect, type CSSProperties } from 'react';
+import { BrandAttribution } from '../../../components/brand-attribution';
 import { DataSharing } from '../../../components/data-sharing';
 import { LockKeyhole, MousePointerClick, ShieldCheck, Sparkles } from '../../../components/icons';
 import { NodGlyph } from '../../../components/motion';
 import { Button } from '../../../components/ui';
-import { appPages } from '../../../../shared/app-links';
 import { desktopRuntimeAvailable } from '../../../lib/desktop';
 import { legalLinks } from '../../../../shared/onboarding';
 import type { StepProps } from '..';
@@ -17,8 +17,8 @@ function differentiators(local: boolean) {
     },
     {
       icon: Sparkles,
-      title: 'Works proactively',
-      text: `Turn on automatic preparation in ${appPages['/settings/notifications']} to get useful work from app changes, within a monthly allowance.`,
+      title: 'Start with a clear brief',
+      text: 'Choose a guided workflow, supply your information and review the request before it runs.',
     },
     {
       icon: LockKeyhole,
@@ -37,7 +37,7 @@ export function Welcome({
   onNext,
   usageShared,
   traces,
-  actionLabel = 'Get started',
+  actionLabel = 'Set up your workspace',
   local = desktopRuntimeAvailable() ||
     ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname),
   note = true,
@@ -56,11 +56,14 @@ export function Welcome({
   return (
     <section className="ob-step ob-welcome">
       <div className="ob-welcome-content">
+        <span className="friday-eyebrow">LESS BUSYWORK. MORE POSSIBILITY.</span>
         <h1 className="ob-welcome-wordmark" aria-label="F.R.I.D.A.Y">
           <NodGlyph size={48} mode="bounce" className="ob-welcome-mark" />
           <span aria-hidden="true">F.R.I.D.A.Y</span>
         </h1>
-        <p className="ob-welcome-copy">An assistant that takes work off your plate.</p>
+        <p className="ob-welcome-copy">
+          Your next idea deserves more of your time. Let’s make room for it.
+        </p>
         <ul className="ob-welcome-points">
           {differentiators(local).map(({ icon: Icon, title, text }, index) => (
             <li
@@ -94,9 +97,8 @@ export function Welcome({
 
 export function WelcomeNote() {
   return (
-    <p className="ob-welcome-note">
-      F.R.I.D.A.Y by fish eye, built on Nod by n8n
-      <br />
+    <div className="ob-welcome-note">
+      <BrandAttribution />
       <a className="ob-link" href={legalLinks.terms} target="_blank" rel="noreferrer">
         Terms of Use
       </a>
@@ -104,6 +106,6 @@ export function WelcomeNote() {
       <a className="ob-link" href={legalLinks.privacy} target="_blank" rel="noreferrer">
         Privacy policy
       </a>
-    </p>
+    </div>
   );
 }

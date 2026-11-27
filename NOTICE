@@ -28,3 +28,10 @@ F.R.I.D.A.Y startup reliability modifications by fish eye, 2026-11-27
 Modified scripts/start.mjs, scripts/friday-doctor.mjs, tests/sandbox.test.ts
 and docs/friday.md and docs/friday-implementation.md; added shared Docker
 preflight checks before install/build.
+
+F.R.I.D.A.Y interface and original emblem by fish eye, 2026-11-27
+Modified web theme, navigation, chat, composer, onboarding, startup branding,
+desktop setup/window titles, activity overlay, callback pages and icon assets. New brand attribution and guided
+task components preserve the Nod/n8n foundation attribution and licence links.
+Product display metadata and startup labels were also updated; original
+protocol names, data locations and third-party attribution remain.

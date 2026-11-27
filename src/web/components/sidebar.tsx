@@ -1,5 +1,6 @@
 import { type Ref, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { LayoutGrid, Moon, Settings, Sun } from './icons';
+import { BrandAttribution } from './brand-attribution';
 import { BrandMark } from './brand';
 import { Tooltip } from './tooltip';
 import { desktopSettingsAvailable } from '../lib/desktop';
@@ -42,7 +43,7 @@ export function Sidebar({
           : 'Checking unread messages'
         : `${unreadCount} unread ${unreadCount === 1 ? 'message' : 'messages'}`;
   const chatLabel = [
-    'Chat',
+    'Workspace',
     unreadCount || unreadPending ? unreadLabel : null,
     presence === 'waiting'
       ? 'waiting for you'
@@ -216,9 +217,12 @@ export function Sidebar({
           }}
         >
           <BrandMark />
-          <span>F.R.I.D.A.Y</span>
+          <span className="friday-wordmark">
+            F.R.I.D.A.Y<small>PERSONAL AI WORKSPACE</small>
+          </span>
         </a>
       </div>
+      <div className="friday-nav-caption">WORKSPACE</div>
       <nav className="main-nav" aria-label="Main navigation" id="sidebar-navigation">
         <ul
           onKeyDown={(event) => {
@@ -280,6 +284,24 @@ export function Sidebar({
           })}
         </ul>
       </nav>
+      <a
+        href="/browser"
+        className="friday-browser-link"
+        onClick={(event) => {
+          if (
+            event.metaKey ||
+            event.ctrlKey ||
+            event.shiftKey ||
+            event.altKey ||
+            event.button !== 0
+          )
+            return;
+          event.preventDefault();
+          onNavigate('/browser');
+        }}
+      >
+        Open browser <span aria-hidden="true">↗</span>
+      </a>
       <div className="mobile-top-bar">
         <a
           href="/"
@@ -361,6 +383,7 @@ export function Sidebar({
                 );
               })}
             </nav>
+            <BrandAttribution />
             {account && (
               <div className="mobile-sheet-actions">
                 <button
@@ -381,6 +404,11 @@ export function Sidebar({
         </dialog>
       </div>
       <div className="sidebar-bottom">
+        <div className="friday-team-signature">
+          <span>FISH EYE</span>
+          <small>Built for a little more possibility.</small>
+        </div>
+        <BrandAttribution />
         {!account && (
           <Tooltip content={themeLabel} side="right">
             <button
