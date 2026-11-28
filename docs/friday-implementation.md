@@ -66,7 +66,7 @@ Docker 29.1.3, Compose 2.40.3 and Buildx 0.30.1 were then installed by the owner
 
 ## November 27 interface redesign
 
-F.R.I.D.A.Y now has an original geometric F emblem across the interface, favicons, desktop icons and tray assets; a blue, cyan and violet theme with light/dark variants; an expanded default navigation layout for new preferences; task-first workspace cards; and an editable task brief above the existing composer. In established conversations the workflow selector stays compact. Setup, onboarding, access screens, window titles and notification/desktop activity labels use the same product identity.
+F.R.I.D.A.Y now has an original geometric F emblem across the interface, favicons, desktop icons and tray assets; a neutral theme with a restrained blue accent with light/dark variants; an expanded default navigation layout for new preferences; task-first workspace cards; and an editable task brief above the existing composer. In established conversations the workflow selector stays compact. Setup, onboarding, access screens, window titles and notification/desktop activity labels use the same product identity.
 
 The redesign preserves the existing routes, API/authentication behavior, user-data locations, draft protection, Stop, approval cards, desktop availability guards and takeover tools. Existing theme/sidebar preferences remain honored. No new package dependency, external font, graphics engine, telemetry destination or model call was introduced. Foundation attribution is accessible in About F.R.I.D.A.Y in desktop/mobile navigation and onboarding, with licence and notice links; original copyright and licence files remain intact. Internal compatibility identifiers keep their existing values.
 
@@ -79,3 +79,7 @@ Packaging-metadata and notification contracts also passed: 22 tests. No new inst
 ## November 28 color refresh
 
 The workspace uses royal blue controls, a blue navigation gradient, a compact tinted welcome panel and blue, cyan and violet task cards. Light and dark themes share the same visual hierarchy. Favicons, app icons, setup and desktop activity colors match the new palette. This update adds no dependencies or changes to task execution.
+
+## November 28 interface simplification
+
+The interface now uses neutral light and dark surfaces, plain task cards, smaller navigation icons and a restrained blue accent for controls and selection. The welcome panel has no decorative background, and redundant sidebar captions are hidden. The update preserves workflow preparation, drafts, authentication and task execution.

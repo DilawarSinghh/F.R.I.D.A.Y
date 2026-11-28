@@ -5,20 +5,20 @@
   border-radius: 9px;
 }
 .sidebar {
-  --brand-accent: #7dd3fc;
+  --brand-accent: var(--accent);
   width: 244px;
-  background: linear-gradient(165deg, #153c82 0%, #102b60 55%, #102344 100%);
-  color: #eaf2ff;
+  background: var(--surface-subtle);
+  color: var(--foreground);
   padding: 26px 16px 16px;
-  border-right: 1px solid #284b81;
+  border-right: 1px solid var(--border);
 }
 .sidebar .brand {
   height: auto;
   padding: 0 8px;
   gap: 11px;
-  letter-spacing: 1.5px;
-  font-size: 20px;
-  color: #ffffff;
+  letter-spacing: 0.2px;
+  font-size: 18px;
+  color: var(--foreground);
 }
 .sidebar .brand-glyph {
   width: 37px;
@@ -35,11 +35,11 @@
   line-height: 1.4;
   font-weight: 400;
   letter-spacing: 1.65px;
-  color: #a9c6ef;
+  color: var(--muted-foreground);
 }
 .friday-nav-caption {
   margin: 48px 12px 14px;
-  color: #9dbce8;
+  color: var(--muted-foreground);
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 1.8px;
@@ -51,42 +51,42 @@
 }
 .sidebar .main-nav ul {
   display: grid;
-  gap: 7px;
+  gap: 4px;
 }
 .sidebar .nav-link {
   min-height: 44px;
   padding: 11px 14px;
   border-radius: 10px;
   gap: 13px;
-  color: #c1d6f5;
-  font-size: 13px;
+  color: var(--text-secondary);
+  font-size: 14px;
 }
 .sidebar .nav-link:hover {
-  color: #ffffff;
-  background: #20467e;
+  color: var(--foreground);
+  background: var(--hover);
 }
 .sidebar .nav-link-active,
 .sidebar .nav-link-active:hover {
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 .sidebar .nav-link-active svg {
-  color: #7dd3fc;
+  color: var(--accent);
 }
 .friday-browser-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  color: #c1d6f5;
-  border-top: 1px solid #35598b;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border);
   margin: 26px 12px 0;
   padding-top: 18px;
   font-size: 12px;
   text-decoration: none;
 }
 .friday-browser-link:hover {
-  color: #ffffff;
+  color: var(--foreground);
 }
 .friday-team-signature {
   display: grid;
@@ -97,11 +97,11 @@
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 2px;
-  color: #a9c6ef;
+  color: var(--muted-foreground);
 }
 .friday-team-signature > small {
   font-size: 11px;
-  color: #9dbce8;
+  color: var(--muted-foreground);
   line-height: 1.5;
 }
 .friday-about {
@@ -127,10 +127,10 @@
 }
 .sidebar .friday-about {
   margin: 0 12px 12px;
-  color: #c1d6f5;
+  color: var(--text-secondary);
 }
 .sidebar .friday-about summary {
-  color: #a9c6ef;
+  color: var(--muted-foreground);
 }
 .sidebar-bottom {
   gap: 8px;
@@ -157,8 +157,8 @@
   background: var(--canvas);
 }
 .conversation-column {
-  max-width: 1100px;
-  padding-inline: clamp(22px, 4vw, 60px);
+  max-width: 960px;
+  padding-inline: clamp(20px, 3vw, 40px);
 }
 .friday-command-header {
   display: flex;
@@ -206,17 +206,8 @@
   background: var(--success);
 }
 .friday-welcome {
-  max-width: none;
-  border-radius: 24px;
-  padding: 22px 26px;
-  margin-bottom: 22px;
-  border: 1px solid var(--accent-border);
-  background: linear-gradient(
-    115deg,
-    var(--accent-soft),
-    color-mix(in srgb, #38bdf8 12%, var(--surface)),
-    color-mix(in srgb, #a78bfa 13%, var(--surface))
-  );
+  padding: 24px 0;
+  margin-bottom: 12px;
 }
 .friday-welcome-symbol {
   display: flex;
@@ -232,11 +223,11 @@
 }
 .friday-welcome h2 {
   margin: 0;
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(28px, 3vw, 36px);
   line-height: 1.12;
-  font-weight: 650;
-  letter-spacing: -2px;
-  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: -1px;
+  color: var(--foreground);
 }
 .friday-welcome > p {
   max-width: 430px;
@@ -258,17 +249,17 @@
   background: var(--canvas);
 }
 .chat-page .composer {
-  border: 1px solid var(--accent-border);
-  border-radius: 20px;
+  border: 1px solid var(--input);
+  border-radius: 14px;
   background: var(--surface);
-  box-shadow: 0 8px 30px color-mix(in srgb, #2563eb 10%, transparent);
+  box-shadow: var(--shadow-sm);
 }
 .chat-page .composer:focus-within {
   border-color: var(--accent-border);
 }
 .chat-page .send-button {
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--primary);
+  color: var(--primary-foreground);
   border-radius: 9px;
 }
 .message-user .message-content {
@@ -440,7 +431,7 @@
     letter-spacing: 1px;
   }
   .friday-welcome {
-    padding: 22px 18px;
+    padding: 20px 0;
   }
   .friday-welcome h2 {
     letter-spacing: -1.3px;
@@ -511,7 +502,7 @@
 
 @media (min-width: 641px) {
   .sidebar :is(a, button, summary):focus-visible {
-    outline: 2px solid #7dd3fc;
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
 }
@@ -520,19 +511,22 @@
   color: var(--accent);
 }
 .friday-welcome-symbol .brand-glyph {
-  padding: 5px;
-  width: 36px;
-  height: 36px;
-  border-radius: 14px;
-  background: var(--surface);
-  box-shadow: 0 4px 16px #2563eb14;
+  width: 28px;
+  height: 28px;
 }
-.ob-welcome-point {
-  background: linear-gradient(135deg, var(--surface), var(--accent-soft));
+.sidebar .nav-link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
-.server-access-page {
-  background: radial-gradient(ellipse at top, var(--accent-soft), var(--canvas) 70%);
+.friday-wordmark small,
+.friday-nav-caption,
+.friday-team-signature > small {
+  display: none;
 }
-.server-access {
-  box-shadow: 0 20px 60px #2563eb14;
+.sidebar .main-nav {
+  margin-top: 32px;
+}
+.friday-team-signature {
+  padding-block: 10px;
 }
