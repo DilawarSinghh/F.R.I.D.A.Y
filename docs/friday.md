@@ -77,6 +77,6 @@ After all three checks succeed, run `node scripts/friday-doctor.mjs` and `pnpm s
 
 ## F.R.I.D.A.Y interface
 
-The workspace uses an original geometric F emblem, an ink-and-amber visual identity, task cards, a scrollable task brief and a persistent conversation composer. Research, form preparation and native editor cards prepare editable requests; they never send automatically. In an existing conversation, expand Guided workflows to create another brief. Existing drafts remain protected, and desktop preparation stays disabled in a web/remote client.
+The workspace uses an original geometric F emblem, an blue, cyan and violet visual identity, task cards, a scrollable task brief and a persistent conversation composer. Research, form preparation and native editor cards prepare editable requests; they never send automatically. In an existing conversation, expand Guided workflows to create another brief. Existing drafts remain protected, and desktop preparation stays disabled in a web/remote client.
 
 The model indicator reports configuration state, not a guarantee of model availability. Stop, review cards, browser takeover, keyboard navigation, theme preferences and existing routes remain available. The visual changes add no graphics framework, external fonts or model calls. About F.R.I.D.A.Y in the sidebar and onboarding retains the Nod/n8n foundation credit and links to licence and notices. Privacy disclosures and third-party identities stay accurate. Internal compatibility identifiers and release infrastructure are not represented as original team work.

@@ -9,5 +9,5 @@
   document.documentElement.style.colorScheme = theme;
   document
     .querySelector('meta[name="theme-color"]')
-    ?.setAttribute('content', theme === 'dark' ? '#111a25' : '#f7f7f2');
+    ?.setAttribute('content', theme === 'dark' ? '#10203f' : '#f3f7ff');
 })();

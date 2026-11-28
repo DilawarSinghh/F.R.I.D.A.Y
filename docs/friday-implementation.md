@@ -66,7 +66,7 @@ Docker 29.1.3, Compose 2.40.3 and Buildx 0.30.1 were then installed by the owner
 
 ## November 27 interface redesign
 
-F.R.I.D.A.Y now has an original geometric F emblem across the interface, favicons, desktop icons and tray assets; an ink-and-amber theme with light/dark variants; an expanded default navigation layout for new preferences; task-first workspace cards; and an editable task brief above the existing composer. In established conversations the workflow selector stays compact. Setup, onboarding, access screens, window titles and notification/desktop activity labels use the same product identity.
+F.R.I.D.A.Y now has an original geometric F emblem across the interface, favicons, desktop icons and tray assets; a blue, cyan and violet theme with light/dark variants; an expanded default navigation layout for new preferences; task-first workspace cards; and an editable task brief above the existing composer. In established conversations the workflow selector stays compact. Setup, onboarding, access screens, window titles and notification/desktop activity labels use the same product identity.
 
 The redesign preserves the existing routes, API/authentication behavior, user-data locations, draft protection, Stop, approval cards, desktop availability guards and takeover tools. Existing theme/sidebar preferences remain honored. No new package dependency, external font, graphics engine, telemetry destination or model call was introduced. Foundation attribution is accessible in About F.R.I.D.A.Y in desktop/mobile navigation and onboarding, with licence and notice links; original copyright and licence files remain intact. Internal compatibility identifiers keep their existing values.
 
@@ -75,3 +75,7 @@ Visual and interaction checks used the actual components in a clearly labelled, 
 The selected desktop regression run passed 23 tests covering setup-origin isolation, window sizing/readiness, upgrade/onboarding preservation and Stop after cancellation. Full packaged release validation and the complete application suite were not rerun for this visual change.
 
 Packaging-metadata and notification contracts also passed: 22 tests. No new installer was built or published. The existing server remained running while the UI was rebuilt. Its production static-file routes enumerate asset filenames at startup, so the rebuilt client needs one backend restart. The final entry-screen check found an HTML response for a new JavaScript filename. One task was waiting, so the backend was left untouched pending owner approval or completion of that task; no authentication or routing boundary was weakened.
+
+## November 28 color refresh
+
+The workspace uses royal blue controls, a blue navigation gradient, a compact tinted welcome panel and blue, cyan and violet task cards. Light and dark themes share the same visual hierarchy. Favicons, app icons, setup and desktop activity colors match the new palette. This update adds no dependencies or changes to task execution.

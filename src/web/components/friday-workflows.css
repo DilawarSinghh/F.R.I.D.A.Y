@@ -31,21 +31,29 @@
   gap: 14px;
   min-width: 0;
   text-align: left;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
+  --workflow-color: #2563eb;
+  border: 1px solid color-mix(in srgb, var(--workflow-color) 32%, var(--border));
+  border-top: 3px solid var(--workflow-color);
+  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    var(--surface),
+    color-mix(in srgb, var(--workflow-color) 10%, var(--surface))
+  );
   color: var(--foreground);
   padding: 20px;
   font: inherit;
   cursor: pointer;
   transition:
     border-color 150ms,
-    background 150ms;
+    background 150ms,
+    box-shadow 150ms;
 }
 .friday-workflow-card:hover,
 .friday-workflow-card[aria-pressed='true'] {
-  background: var(--accent-soft);
-  border-color: var(--accent-border);
+  background: color-mix(in srgb, var(--workflow-color) 14%, var(--surface));
+  border-color: var(--workflow-color);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--workflow-color) 12%, transparent);
 }
 .friday-workflow-card-top {
   display: flex;
@@ -196,5 +204,27 @@
 @media (prefers-reduced-motion: reduce) {
   .friday-workflow-card {
     transition: none;
+  }
+}
+
+.friday-workflow-card:nth-child(2) {
+  --workflow-color: #0891b2;
+}
+.friday-workflow-card:nth-child(3) {
+  --workflow-color: #8b5cf6;
+}
+.friday-workflow-card-top > svg {
+  box-sizing: content-box;
+  padding: 10px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--workflow-color) 14%, var(--surface));
+  color: var(--accent);
+}
+@media (max-width: 560px) {
+  .friday-workflow-card {
+    grid-template-columns: 40px 1fr;
+  }
+  .friday-workflow-card-top > svg {
+    padding: 8px;
   }
 }

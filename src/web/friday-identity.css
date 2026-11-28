@@ -5,11 +5,12 @@
   border-radius: 9px;
 }
 .sidebar {
+  --brand-accent: #7dd3fc;
   width: 244px;
-  background: #101924;
-  color: #e8efed;
+  background: linear-gradient(165deg, #153c82 0%, #102b60 55%, #102344 100%);
+  color: #eaf2ff;
   padding: 26px 16px 16px;
-  border-right: 1px solid #263440;
+  border-right: 1px solid #284b81;
 }
 .sidebar .brand {
   height: auto;
@@ -17,7 +18,7 @@
   gap: 11px;
   letter-spacing: 1.5px;
   font-size: 20px;
-  color: #f2f5ef;
+  color: #ffffff;
 }
 .sidebar .brand-glyph {
   width: 37px;
@@ -34,11 +35,11 @@
   line-height: 1.4;
   font-weight: 400;
   letter-spacing: 1.65px;
-  color: #8ea4ae;
+  color: #a9c6ef;
 }
 .friday-nav-caption {
   margin: 48px 12px 14px;
-  color: #7d939f;
+  color: #9dbce8;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 1.8px;
@@ -57,35 +58,35 @@
   padding: 11px 14px;
   border-radius: 10px;
   gap: 13px;
-  color: #aabcc5;
+  color: #c1d6f5;
   font-size: 13px;
 }
 .sidebar .nav-link:hover {
-  color: #f2f5ef;
-  background: #1c2b38;
+  color: #ffffff;
+  background: #20467e;
 }
 .sidebar .nav-link-active,
 .sidebar .nav-link-active:hover {
-  background: #28342f;
-  color: #f1c46d;
+  background: #2563eb;
+  color: #ffffff;
 }
 .sidebar .nav-link-active svg {
-  color: #efb54a;
+  color: #7dd3fc;
 }
 .friday-browser-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  color: #aabcc5;
-  border-top: 1px solid #293945;
+  color: #c1d6f5;
+  border-top: 1px solid #35598b;
   margin: 26px 12px 0;
   padding-top: 18px;
   font-size: 12px;
   text-decoration: none;
 }
 .friday-browser-link:hover {
-  color: #f1c46d;
+  color: #ffffff;
 }
 .friday-team-signature {
   display: grid;
@@ -96,11 +97,11 @@
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 2px;
-  color: #8ea4ae;
+  color: #a9c6ef;
 }
 .friday-team-signature > small {
   font-size: 11px;
-  color: #7d939f;
+  color: #9dbce8;
   line-height: 1.5;
 }
 .friday-about {
@@ -126,10 +127,10 @@
 }
 .sidebar .friday-about {
   margin: 0 12px 12px;
-  color: #aabcc5;
+  color: #c1d6f5;
 }
 .sidebar .friday-about summary {
-  color: #8ea4ae;
+  color: #a9c6ef;
 }
 .sidebar-bottom {
   gap: 8px;
@@ -191,7 +192,7 @@
   font-size: 11px;
   padding: 9px 12px;
   border: 1px solid var(--border);
-  border-radius: 7px;
+  border-radius: 999px;
   color: var(--muted-foreground);
   background: var(--surface);
 }
@@ -205,14 +206,23 @@
   background: var(--success);
 }
 .friday-welcome {
-  padding: 26px 0 34px;
-  max-width: 640px;
+  max-width: none;
+  border-radius: 24px;
+  padding: 22px 26px;
+  margin-bottom: 22px;
+  border: 1px solid var(--accent-border);
+  background: linear-gradient(
+    115deg,
+    var(--accent-soft),
+    color-mix(in srgb, #38bdf8 12%, var(--surface)),
+    color-mix(in srgb, #a78bfa 13%, var(--surface))
+  );
 }
 .friday-welcome-symbol {
   display: flex;
   align-items: center;
   gap: 11px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   color: var(--accent);
 }
 .friday-welcome-symbol > span:last-child {
@@ -222,18 +232,18 @@
 }
 .friday-welcome h2 {
   margin: 0;
-  font-size: clamp(32px, 4.5vw, 54px);
+  font-size: clamp(30px, 4vw, 44px);
   line-height: 1.12;
-  font-weight: 500;
+  font-weight: 650;
   letter-spacing: -2px;
-  color: var(--foreground);
+  color: var(--accent);
 }
 .friday-welcome > p {
   max-width: 430px;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--muted-foreground);
-  line-height: 1.8;
-  margin: 18px 0;
+  line-height: 1.65;
+  margin: 12px 0;
 }
 .friday-control-note {
   display: flex;
@@ -248,17 +258,17 @@
   background: var(--canvas);
 }
 .chat-page .composer {
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
   background: var(--surface);
-  box-shadow: var(--shadow-composer);
+  box-shadow: 0 8px 30px color-mix(in srgb, #2563eb 10%, transparent);
 }
 .chat-page .composer:focus-within {
   border-color: var(--accent-border);
 }
 .chat-page .send-button {
-  background: var(--brand-accent);
-  color: #111a25;
+  background: #2563eb;
+  color: #ffffff;
   border-radius: 9px;
 }
 .message-user .message-content {
@@ -430,7 +440,7 @@
     letter-spacing: 1px;
   }
   .friday-welcome {
-    padding-top: 12px;
+    padding: 22px 18px;
   }
   .friday-welcome h2 {
     letter-spacing: -1.3px;
@@ -486,6 +496,7 @@
 }
 @media (max-width: 640px) {
   .app-shell .sidebar {
+    --brand-accent: var(--accent);
     background: var(--canvas);
     color: var(--foreground);
   }
@@ -500,7 +511,28 @@
 
 @media (min-width: 641px) {
   .sidebar :is(a, button, summary):focus-visible {
-    outline: 2px solid #efb54a;
+    outline: 2px solid #7dd3fc;
     outline-offset: 3px;
   }
+}
+
+.friday-control-note svg {
+  color: var(--accent);
+}
+.friday-welcome-symbol .brand-glyph {
+  padding: 5px;
+  width: 36px;
+  height: 36px;
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 4px 16px #2563eb14;
+}
+.ob-welcome-point {
+  background: linear-gradient(135deg, var(--surface), var(--accent-soft));
+}
+.server-access-page {
+  background: radial-gradient(ellipse at top, var(--accent-soft), var(--canvas) 70%);
+}
+.server-access {
+  box-shadow: 0 20px 60px #2563eb14;
 }

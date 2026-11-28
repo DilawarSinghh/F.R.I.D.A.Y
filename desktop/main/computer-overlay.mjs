@@ -15,21 +15,21 @@ const pillSize = { width: 380, height: 48 };
 
 const glowPage = `<!doctype html><html><head><meta charset="utf-8"><style>
 html,body{margin:0;height:100%;background:transparent;overflow:hidden}
-.glow{position:fixed;inset:0;border-radius:12px;box-shadow:inset 0 0 0 2px rgba(255,145,172,.95),inset 0 0 32px 8px rgba(255,92,138,.5);animation:pulse 2s ease-in-out infinite;will-change:opacity}
+.glow{position:fixed;inset:0;border-radius:12px;box-shadow:inset 0 0 0 2px rgba(96,165,250,.95),inset 0 0 32px 8px rgba(56,189,248,.5);animation:pulse 2s ease-in-out infinite;will-change:opacity}
 @keyframes pulse{50%{opacity:.5}}
 @media (prefers-reduced-motion:reduce){.glow{animation:none}}
 </style></head><body><div class="glow"></div></body></html>`;
 
 const pillPage = `<!doctype html><html><head><meta charset="utf-8"><style>
 html,body{margin:0;height:100%;background:transparent;overflow:hidden;font:500 13px/1 -apple-system,BlinkMacSystemFont,system-ui,'Segoe UI',sans-serif}
-.pill{box-sizing:border-box;height:40px;margin:4px auto;display:flex;align-items:center;gap:10px;padding:0 6px 0 14px;width:max-content;max-width:372px;border-radius:20px;background:#fff;color:#1a1a1a;box-shadow:0 0 0 1px rgba(255,145,172,.9),0 6px 18px rgba(135,0,60,.25)}
-.dot{width:8px;height:8px;border-radius:50%;background:#ff5c8a;animation:pulse 1.2s ease-in-out infinite}
+.pill{box-sizing:border-box;height:40px;margin:4px auto;display:flex;align-items:center;gap:10px;padding:0 6px 0 14px;width:max-content;max-width:372px;border-radius:20px;background:#fff;color:#1a1a1a;box-shadow:0 0 0 1px rgba(96,165,250,.9),0 6px 18px rgba(37,99,235,.25)}
+.dot{width:8px;height:8px;border-radius:50%;background:#38bdf8;animation:pulse 1.2s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}}
 .quiet .dot{animation:none;opacity:.8}
 .text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-button{font:inherit;border:0;border-radius:14px;height:28px;padding:0 12px;background:#efb54a;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:6px}
-button:hover{background:#ffbcca}
+button{font:inherit;border:0;border-radius:14px;height:28px;padding:0 12px;background:#60a5fa;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:6px}
+button:hover{background:#93c5fd}
 kbd{font:inherit;opacity:.6}
 @media (prefers-color-scheme:dark){.pill{background:#1f1f1f;color:#f5f5f5}}
 </style></head><body><div class="pill"><span class="dot"></span><span class="text" id="text"></span><button id="stop">Stop <kbd>${stopLabel}</kbd></button></div>
